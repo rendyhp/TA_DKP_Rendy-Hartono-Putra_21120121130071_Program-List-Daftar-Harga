@@ -80,7 +80,7 @@ namespace DaftarHarga {
 			this->aboutLabel2->Name = L"aboutLabel2";
 			this->aboutLabel2->Size = System::Drawing::Size(47, 13);
 			this->aboutLabel2->TabIndex = 1;
-			this->aboutLabel2->Text = L"Ver 0.01";
+			this->aboutLabel2->Text = L"Ver 1.00";
 			// 
 			// panel1
 			// 
@@ -130,6 +130,7 @@ namespace DaftarHarga {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"BoxAbout";
+			this->ShowInTaskbar = false;
 			this->Text = L"About";
 			this->ResumeLayout(false);
 			this->PerformLayout();
