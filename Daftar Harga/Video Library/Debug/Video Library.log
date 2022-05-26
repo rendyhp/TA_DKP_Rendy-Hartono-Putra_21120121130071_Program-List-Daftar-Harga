@@ -1,0 +1,7 @@
+﻿  BoxAbout.cpp
+  MyForm.cpp
+F:\[Visual Studio]\Cpp\Daftar Harga\Video Library\MyForm.cpp(8,33): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+  MyForm1.cpp
+  Generating Code...
+  BoxAbout.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  Video Library.vcxproj -> F:\[Visual Studio]\Cpp\Daftar Harga\Debug\Daftar Harga.exe

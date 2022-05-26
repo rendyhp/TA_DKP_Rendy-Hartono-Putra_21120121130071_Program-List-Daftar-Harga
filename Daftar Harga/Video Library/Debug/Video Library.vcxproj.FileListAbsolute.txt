@@ -1,0 +1,5 @@
+F:\[Visual Studio]\Cpp\Daftar Harga\Video Library\Debug\Video Library.vcxproj.AssemblyReference.cache
+F:\[Visual Studio]\Cpp\Daftar Harga\Video Library\Debug\DaftarHarga.BoxAbout.resources
+F:\[Visual Studio]\Cpp\Daftar Harga\Video Library\Debug\DaftarHarga.MyForm.resources
+F:\[Visual Studio]\Cpp\Daftar Harga\Video Library\Debug\DaftarHarga.MyForm1.resources
+F:\[Visual Studio]\Cpp\Daftar Harga\Video Library\Debug\Video Library.vcxproj.GenerateResource.cache

@@ -1,0 +1,100 @@
+#pragma once
+#include <string>
+#include <vector>
+#include <unordered_map>
+
+using namespace System::Windows::Forms;
+
+
+	class GameConfig
+	{
+	public:
+		std::vector<std::wstring> GameDir = std::vector<std::wstring>(4);
+		std::vector<std::wstring> crapCFG = std::vector<std::wstring>(2);
+		std::vector<bool> appLocale = std::vector<bool>(4);
+		int DefaultDir = 0;
+		bool DefaultApplocale = false;
+		bool customBanner = false;
+		std::wstring bannerOn = L"";
+		std::wstring bannerOff = L"";
+		bool customText = false;
+		int textColor = 0;
+		bool showBanner = true;
+		bool showText = true;
+		int defaultTextColor = 0;
+		bool randomCheck = true;
+		int category = 0;
+
+		GameConfig(int i);
+	};
+
+	class SubNode
+	{
+	private:
+		std::wstring Text;
+
+	public:
+		std::wstring getText() const;
+		void setText(const std::wstring& value);
+		std::vector<SubNode*> Nodes = std::vector<SubNode*>();
+		std::unordered_map<std::wstring, std::wstring> Games = std::unordered_map<std::wstring, std::wstring>();
+
+		SubNode(const std::wstring& Text = L"The root node");
+	};
+
+		template<typename T>
+		class AppSettings
+		{
+			static_assert(std::is_default_constructible<T>::value, L"T requires default-constructible elements");
+
+		private:
+			static const std::wstring DEFAULT_FILENAME;
+
+		public:
+			void Save(const std::wstring& fileName = DEFAULT_FILENAME) {
+				File::WriteAllText(fileName, JsonConvert::SerializeObject(this, Formatting::Indented));
+			}
+			static void Save(T pSettings, const std::wstring& fileName = DEFAULT_FILENAME) {
+				File::WriteAllText(fileName, JsonConvert::SerializeObject(pSettings, Formatting::Indented));
+			}
+			static T Load(const std::wstring& fileName = DEFAULT_FILENAME) {
+				if (FileSystem::fileExists(fileName)) {
+					return JsonConvert::DeserializeObject<T>(File::ReadAllText(fileName));
+				}
+				else {
+					return T();
+				}
+			}
+			class Configs : public AppSettings<Configs*>
+			{
+			public:
+				std::vector<GameConfig*> gameCFG = std::vector<GameConfig*>(totalGameCount);
+				SubNode* Custom = new SubNode();
+				View* customView = View->LargeIcon;
+				SortOrder* customSort = SortOrder->Ascending;
+				bool autoClose = false;
+				bool showTray = false;
+				bool minimizeToTray = false;
+				int language = 0;
+				std::wstring np2Dir = L"";
+				std::wstring crapDir = L"";
+				std::wstring StartingRepo = LR"(https://mirrors.thpatch.net/nmlgc/)";
+				virtual ~Configs()
+				{
+					delete Custom;
+					delete customView;
+					delete customSort;
+				}
+
+				Configs();
+			private:
+				FormWindowState lastState = FormWindowState::Normal;
+
+			public:
+				static Configs curCfg;
+				static System::Resources::ResourceManager rm();
+
+
+			};
+
+	};
